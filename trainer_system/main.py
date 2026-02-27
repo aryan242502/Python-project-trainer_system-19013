@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 import sqlite3
 import datetime
 
-# ================= COLORS =================
+
 BG = "#0f172a"
 CARD = "#1e293b"
 TEXT = "#e2e8f0"
@@ -12,7 +12,7 @@ GREEN = "#22c55e"
 RED = "#ef4444"
 YELLOW = "#f59e0b"
 
-# ================= DATABASE =================
+
 def connect_db():
     return sqlite3.connect("gym.db")
 
@@ -54,7 +54,7 @@ def create_tables():
 
 create_tables()
 
-# ================= LOGIN WINDOW =================
+
 login_window = tk.Tk()
 login_window.title("Admin Login")
 login_window.geometry("360x500")
@@ -88,7 +88,7 @@ tk.Button(login_window, text="LOGIN",
           font=("Segoe UI", 10, "bold"),
           command=check_login).pack(pady=15, fill="x", padx=40)
 
-# ================= MAIN APP =================
+
 def open_main_app():
     root = tk.Tk()
     root.title("Trainer Management")
@@ -110,7 +110,7 @@ def open_main_app():
              font=("Segoe UI", 16, "bold"),
              bg=BG, fg=ACCENT).pack(pady=10)
 
-    # ================= FORM =================
+    
     form = tk.Frame(frame, bg=CARD, padx=15, pady=15)
     form.pack(fill="x", padx=10, pady=5)
 
@@ -152,7 +152,7 @@ def open_main_app():
     tk.Label(form, text="Salary", bg=CARD, fg=TEXT).pack(anchor="w")
     tk.Entry(form, textvariable=salary_var, validate="key", validatecommand=vcmd_salary).pack(fill="x", pady=4)
 
-    # ================= FUNCTIONS =================
+    
     def clear():
         selected_id.set("")
         name_var.set("")
@@ -195,7 +195,7 @@ def open_main_app():
     tk.Button(form, text="Update Trainer", bg=YELLOW, command=update).pack(fill="x", pady=4)
     tk.Button(form, text="Delete Trainer", bg=RED, fg="white", command=delete).pack(fill="x", pady=4)
 
-    # ================= ATTENDANCE =================
+    
     att_frame = tk.Frame(frame, bg=CARD, padx=15, pady=10)
     att_frame.pack(fill="x", padx=10, pady=5)
 
@@ -226,7 +226,7 @@ def open_main_app():
     tk.Button(btn_frame, text="Absent", bg=RED, fg="white",
               command=lambda: mark_attendance("Absent")).pack(side="left", expand=True, fill="x", padx=5)
 
-    # ================= REPORT WINDOW =================
+    
     def open_attendance_report():
         report_win = tk.Toplevel(root)
         report_win.title("Attendance Report")
@@ -265,7 +265,7 @@ def open_main_app():
               font=("Segoe UI", 10, "bold"),
               command=open_attendance_report).pack(fill="x", padx=10, pady=5)
 
-    # ================= TABLE =================
+    
     table_frame = tk.Frame(frame, bg=CARD)
     table_frame.pack(fill="both", expand=True, padx=10, pady=5)
 
@@ -302,5 +302,6 @@ def open_main_app():
     show()
     root.mainloop()
 
-# ================= START =================
+
+
 login_window.mainloop()
